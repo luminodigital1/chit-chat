@@ -45,7 +45,6 @@ export async function getAllMessages(
 export async function getPersonalMessages(
   receiverId: string
 ): Promise<MessageDTO[] | undefined> {
-  console.log("receiverId", receiverId);
   return fetchJsonRequest(
     `/messages/get-personal-messages?receiverId=${encodeURIComponent(
       receiverId
@@ -62,5 +61,11 @@ export async function getContacts(
   return fetchJsonRequest(`/messages/contacts`, {
     method: "Get",
     data: senderId,
+  });
+}
+
+export async function getAllContacts(): Promise<ContactDTO[] | undefined> {
+  return fetchJsonRequest(`/messages/all/contacts`, {
+    method: "Get",
   });
 }
